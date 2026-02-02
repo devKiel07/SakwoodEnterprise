@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cart | WoodCraft Doors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ================= BODY ================= */
+body{
+  margin:0;
+  font-family:Segoe UI, sans-serif;
+  background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat fixed;
+  background-size:cover;
+  min-height:100vh;
+  color:white;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(12px);
+  border-radius:40px;
+  margin:10px 20px;
+  padding:6px 18px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+.navbar .nav-link{
+  color:#fff !important;
+  font-weight:600;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active{
+  color:#ffc107 !important;
+}
+.nav-link.position-relative{
+  position:relative;
+}
+#cart-count{
+  position:absolute;
+  top:-8px;
+  right:-8px;
+  font-size:0.7rem;
+  padding:3px 6px;
+  border-radius:50%;
+}
+
+/* ================= CART TABLE ================= */
+.table-responsive{
+  margin-top:130px;
+}
+table{
+  background:rgba(0,0,0,.55);
+  border-radius:15px;
+}
+table th, table td{
+  vertical-align:middle;
+  text-align:center;
+  color:white;
+}
+.qty-btn{
+  background:#ffc107;
+  border:none;
+  padding:2px 8px;
+  font-weight:bold;
+  border-radius:5px;
+  cursor:pointer;
+}
+.qty-btn:hover{
+  background:#e0a800;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#111;
+  color:#ddd;
+}
+footer h5{
+  color:#ffc107;
+}
+footer a{
+  color:#ccc;
+  text-decoration:none;
+}
+footer a:hover{
+  color:#ffc107;
+}
+.footer-bottom{
+  background:#000;
+  text-align:center;
+  padding:12px;
+  font-size:.9rem;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .navbar-brand img{height:55px;}
+  table th, table td { font-size:0.9rem; }
+  .qty-btn { padding:2px 6px; margin:0 3px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container-fluid">
+<a class="navbar-brand" href="index.html">
+<img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px">
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-lg-center">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+<li class="nav-item"><a class="nav-link active" href="cart.html">Cart</a></li>
+<li class="nav-item ms-lg-3">
+  <a class="nav-link position-relative" href="cart.html" style="font-size:1.2rem;">
+    🛒
+    <span id="cart-count" class="badge bg-danger">0</span>
+  </a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- ================= CART CONTENT ================= -->
+<div class="container">
+<h2 class="text-center mb-4" style="margin-top:130px;">Your Cart</h2>
+
+<div class="table-responsive">
+<table class="table table-dark table-striped text-white">
+<thead>
+<tr>
+<th>Product</th>
+<th>Price (GHS)</th>
+<th>Quantity</th>
+<th>Total (GHS)</th>
+</tr>
+</thead>
+<tbody id="cart-items"></tbody>
+</table>
+</div>
+
+<div class="text-end mt-3">
+<h4>Total: GHS <span id="cart-total">0</span></h4>
+<button class="btn btn-warning mt-2" onclick="goToCheckout()">Proceed to Checkout</button>
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+<div class="container py-4">
+<div class="row">
+
+<div class="col-md-4">
+<h5>SakwoodEnterprise Doors</h5>
+<p>Premium wooden doors crafted for durability and beauty.</p>
+</div>
+
+<div class="col-md-4">
+<h5>Contact</h5>
+<p>📍 Sasabi Junction, Dodowa Road</p>
+<p>📞 0243860943 / 0552186664</p>
+<p>📧 <a href="mailto:sakwoodenterprise@gmail.com">sakwoodenterprise@gmail.com</a></p>
+</div>
+
+<div class="col-md-4">
+<h5>Quick Links</h5>
+<p><a href="index.html">Home</a></p>
+<p><a href="products.html">Products</a></p>
+<p><a href="about.html">About</a></p>
+<p><a href="contact.html">Contact</a></p>
+<p><a href="faq.html">FAQ</a></p>
+</div>
+
+</div>
+</div>
+
+<div class="footer-bottom">© 2026 WoodCraft Doors. All Rights Reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Ensure every item has a valid quantity
+cart = cart.map(item => {
+  return { ...item, qty: item.qty && item.qty > 0 ? item.qty : 0 };
+});
+
+// ================= UPDATE CART BADGE =================
+function updateCartCount(){
+  const count = cart.reduce((sum,item)=>sum + (Number(item.qty) || 0),0);
+  document.getElementById("cart-count").textContent = count;
+}
+
+// ================= RENDER CART =================
+function renderCart(){
+  const tbody = document.getElementById("cart-items");
+  tbody.innerHTML = "";
+  let total = 0;
+
+  if(cart.length === 0 || cart.every(item => item.qty === 0)){
+    tbody.innerHTML = '<tr><td colspan="4">Your cart is empty</td></tr>';
+    document.getElementById("cart-total").textContent = "0";
+    updateCartCount();
+    return;
+  }
+
+  cart.forEach(item=>{
+    const qty = Number(item.qty) || 0;
+    const itemTotal = item.price * qty;
+    total += itemTotal;
+
+    tbody.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td>
+          <button class="qty-btn" onclick="changeQty('${item.name}',-1)">−</button>
+          <span class="mx-2">${qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.name}',1)">+</button>
+        </td>
+        <td>${itemTotal}</td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("cart-total").textContent = total;
+  updateCartCount();
+}
+
+// ================= CHANGE QUANTITY =================
+function changeQty(name, delta){
+  const index = cart.findIndex(i=>i.name === name);
+  if(index === -1) return;
+
+  cart[index].qty = (Number(cart[index].qty) || 0) + delta;
+  if(cart[index].qty <= 0){
+    cart.splice(index,1);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+// ================= CHECKOUT =================
+function goToCheckout(){
+  if(cart.length === 0){
+    alert("Your cart is empty!");
+    return;
+  }
+  localStorage.setItem("cartTotal", cart.reduce((sum,i)=>sum + (i.price * (i.qty || 0)),0));
+  window.location.href = "checkout.html";
+}
+
+// ================= INITIALIZE =================
+document.addEventListener("DOMContentLoaded", renderCart);
+</script>
+
+
+</body>
+</html>

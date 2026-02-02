@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment | WoodCraft Doors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<style>
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  font-family:Segoe UI, sans-serif;
+  background:#111;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+const order = JSON.parse(localStorage.getItem('order'));
+
+if(!order){
+  alert("No order found");
+  window.location.href = "cart.html";
+}
+
+PaystackPop.setup({
+  key: "YOUR_PUBLIC_KEY_HERE",
+  email: order.email,
+  amount: order.total * 100,
+  currency: "GHS",
+  ref: "WC"+Math.floor(Math.random()*1000000000),
+
+  callback: function(response){
+    localStorage.setItem("paymentRef", response.reference);
+    localStorage.removeItem("cart");
+    window.location.href = "order-success.html";
+  },
+
+  onClose: function(){
+    alert("Payment cancelled");
+    window.location.href = "checkout.html";
+  }
+}).openIframe();
+</script>
+
+</body>
+</html>

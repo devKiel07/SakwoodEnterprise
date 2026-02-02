@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WoodCraft Doors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ================= BODY ================= */
+body {
+  margin: 0;
+  font-family: Segoe UI, sans-serif;
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  border-radius: 40px;
+  margin: 10px 20px;
+  padding: 6px 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+.navbar .nav-link {
+  color: #fff !important;
+  font-weight: 600;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffc107 !important;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: slideDown 1.5s ease-out;
+}
+.hero p {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  opacity: 0.9;
+  animation: fadeInText 2s ease-in forwards;
+}
+.hero .btn {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  padding: 10px 40px;
+  animation: popUp 2s ease-out;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: #111;
+  color: #ddd;
+  animation: fadeIn 2s ease-in;
+}
+footer h5 { color: #ffc107; }
+footer a { color: #ccc; text-decoration: none; }
+footer a:hover { color: #ffc107; }
+.footer-bottom { background: #000; text-align: center; padding: 12px; font-size: 0.9rem; }
+
+/* ================= CART BADGE ================= */
+.navbar .badge {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes slideDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeInText { from {opacity:0;} to {opacity:0.9;} }
+@keyframes popUp { from {opacity:0; transform:scale(0.8);} to {opacity:1; transform:scale(1);} }
+
+/* ================= MEDIA ================= */
+@media(max-width:768px){
+  .hero h1 { font-size: 2.1rem; }
+  .hero p { font-size: 1.1rem; }
+  .navbar-brand img { height: 55px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container-fluid">
+  <a class="navbar-brand" href="index.html">
+    <img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px;">
+  </a>
+
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto align-items-lg-center">
+      <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+      <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+        <a class="nav-link position-relative" href="cart.html">
+          🛒 <span id="cart-count" class="badge bg-danger">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <h1>Premium Wooden Doors</h1>
+  <p>Strong • Elegant • Durable</p>
+  <a href="products.html" class="btn btn-warning btn-lg mt-3">Shop Now</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="mt-5">
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>SakwoodEnterprise Doors</h5>
+        <p>Premium wooden doors crafted for durability, security and beauty.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact</h5>
+        <p>📍 Sasabi Junction, Dodowa Road</p>
+        <p>📞 0243860943 / 0552186664</p>
+        <p>📧 <a href="mailto:sakwoodenterprise@gmail.com">sakwoodenterprise@gmail.com</a></p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="products.html">Products</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="contact.html">Contact</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 WoodCraft Doors. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ================= CART LOGIC ================= -->
+<script>
+// ================= SYNC CART ACROSS PAGES =================
+function getCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Ensure every item has a valid qty
+  cart = cart.map(item => ({
+    ...item,
+    qty: item.qty && item.qty > 0 ? Number(item.qty) : 0
+  }));
+  localStorage.setItem("cart", JSON.stringify(cart));
+  return cart;
+}
+
+function updateCartBadge() {
+  const cart = getCart();
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById("cart-count");
+  if (badge) badge.textContent = count;
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateCartBadge);
+</script>
+
+
+</body>
+</html>

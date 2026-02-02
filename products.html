@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products | WoodCraft Doors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:Segoe UI,sans-serif;
+  background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat fixed;
+  min-height:100vh;
+  color:white;
+}
+
+/* NAVBAR */
+.navbar{
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(12px);
+  border-radius:40px;
+  margin:10px 20px;
+  padding:6px 18px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+.navbar .nav-link{
+  color:#fff !important;
+  font-weight:600;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active{
+  color:#ffc107 !important;
+}
+
+/* PRODUCT CARDS */
+.card{
+  border:none;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.4s;
+  animation: fadeIn 1s ease-in;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+.card img{
+  max-height:400px;
+  object-fit:contain;
+  padding:15px;
+  background:rgba(0,0,0,.3);
+}
+.card-body{
+  display:flex;
+  flex-direction:column;
+}
+.card-body button{
+  margin-top:auto;
+}
+
+/* REVIEWS */
+.review-card{
+  background:rgba(0,0,0,.55);
+  border-radius:15px;
+  padding:30px 20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
+  animation: fadeIn 1s ease-in;
+}
+.review-img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:3px solid #ffc107;
+  object-fit:cover;
+  margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:#ddd;
+}
+footer h5{
+  color:#ffc107;
+}
+footer a{
+  color:#ccc;
+  text-decoration:none;
+}
+footer a:hover{
+  color:#ffc107;
+}
+.footer-bottom{
+  background:#000;
+  text-align:center;
+  padding:12px;
+  font-size:.9rem;
+}
+
+/* CART BADGE */
+.navbar .badge {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* MEDIA */
+@media(max-width:768px){
+  .navbar-brand img{height:55px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container-fluid">
+<a class="navbar-brand" href="index.html">
+<img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px">
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto align-items-lg-center">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link active" href="#">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+<li class="nav-item ms-lg-3">
+<a class="nav-link position-relative" href="cart.html">
+🛒 <span id="cart-count" class="badge bg-danger">0</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- PRODUCTS -->
+<div class="container" style="margin-top:130px">
+<h2 class="text-center mb-4">Our Wooden Doors</h2>
+<div class="row g-4">
+
+<!-- Modern Oak -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="modern oark.png">
+<div class="card-body text-center">
+<h5>Modern Oak Interior Door</h5>
+<p>Elegant modern oak door perfect for interiors.</p>
+<p class="fw-bold">GHS 2,800</p>
+<button class="btn btn-warning" onclick="addToCart('Modern Oak Interior Door',2800,'modern oark.png')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Classic Carved -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="classic carved wooden door.png">
+<div class="card-body text-center">
+<h5>Classic Carved Wooden Door</h5>
+<p>Traditional hand-carved hardwood door.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Classic Carved Wooden Door',3500,'classic carved wooden door.png')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Flush Bedroom -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="flush bedroom wooden doors.jpg">
+<div class="card-body text-center">
+<h5>Flush Bedroom Wooden Door</h5>
+<p>Smooth modern door ideal for bedrooms.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Flush Bedroom Wooden Door',3500,'flush bedroom wooden doors.jpg')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Sliding Barn -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="sliding barn wooden door.jpg">
+<div class="card-body text-center">
+<h5>Sliding Barn Wooden Door</h5>
+<p>Rustic sliding barn-style wooden door.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Sliding Barn Wooden Door',3500,'sliding barn wooden door.jpg')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Premium Mahogany -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="premium mahogany main door.jpg">
+<div class="card-body text-center">
+<h5>Premium Mahogany Main Door</h5>
+<p>Luxurious solid mahogany construction with premium finish.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Premium Mahogany Main Door',3500,'premium mahogany main door.jpg')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Solid Teak Security -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="solid teak security doors.jpg">
+<div class="card-body text-center">
+<h5>Solid Teak Security Door</h5>
+<p>Durable solid teak construction for enhanced security.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Solid Teak Security Door',3500,'solid teak security doors.jpg')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- Glass Panel Office -->
+<div class="col-lg-4 col-md-6">
+<div class="card bg-dark bg-opacity-75 text-white h-100">
+<img src="glass panel office door.jpg">
+<div class="card-body text-center">
+<h5>Glass Panel Office Door</h5>
+<p>Professional glass panel design ideal for offices.</p>
+<p class="fw-bold">GHS 3,500</p>
+<button class="btn btn-warning" onclick="addToCart('Glass Panel Office Door',3500,'glass panel office door.jpg')">Add to Cart</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- REVIEWS -->
+<div class="container mt-5">
+<h3 class="text-center mb-4">Customer Reviews</h3>
+<div class="row g-4">
+<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-img"><p>"Strong, elegant and perfectly finished doors."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – Ama K.</p></div></div>
+<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/men/75.jpg" class="review-img"><p>"Excellent service and fast delivery."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – Kwame T.</p></div></div>
+<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="review-img"><p>"Top quality craftsmanship."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – James R.</p></div></div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="mt-5">
+<div class="container py-4">
+<div class="row">
+<div class="col-md-4">
+<h5>SakwoodEnterprise Door</h5>
+<p>Premium wooden doors crafted for durability, security and beauty.</p>
+</div>
+<div class="col-md-4">
+<h5>Contact</h5>
+<p>📍 Sasabi Junction, Dodowa Road</p>
+<p>📞 0243860943 / 0552186664</p>
+<p>📧 <a href="mailto:sakwoodenterprise@gmail.com">sakwoodenterprise@gmail.com</a></p>
+</div>
+<div class="col-md-4">
+<h5>Quick Links</h5>
+<p><a href="index.html">Home</a></p>
+<p><a href="products.html">Products</a></p>
+<p><a href="about.html">About</a></p>
+<p><a href="contact.html">Contact</a></p>
+<p><a href="faq.html">FAQ</a></p>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 WoodCraft Doors. All Rights Reserved.
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ================= CART FUNCTIONS =================
+function getCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map(item => ({...item, qty: item.qty && item.qty > 0 ? Number(item.qty) : 0}));
+  localStorage.setItem("cart", JSON.stringify(cart));
+  return cart;
+}
+
+function updateCartCount() {
+  const cart = getCart();
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById("cart-count");
+  if(badge) badge.textContent = count;
+}
+
+function addToCart(name, price, image) {
+  let cart = getCart();
+  const index = cart.findIndex(i => i.name === name);
+  if(index > -1) {
+    cart[index].qty += 1;
+  } else {
+    cart.push({name, price, image, qty:1});
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert(name + " added to cart!");
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+</html>
