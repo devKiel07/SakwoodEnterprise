@@ -19,17 +19,21 @@ Email: ${customer.email || "Not provided"}
 Address: ${customer.address}
 
 Order Items:
-${cart.map(item => 
-  `- ${item.name} (x${item.quantity}) = GHS ${item.price * item.quantity}`
-).join("\n")}
+${cart
+  .map(
+    (item) =>
+      `- ${item.name} (x${item.qty}) = GHS ${item.price * item.qty}`
+  )
+  .join("\n")}
 
 Total: GHS ${total}
 `;
 
   try {
     await sgMail.send({
-      to: process.env.TO_EMAIL,          // YOUR GMAIL
-      from: process.env.FROM_EMAIL,      // VERIFIED SENDER
+      to: process.env.TO_EMAIL,          // YOU receive the order
+      from: process.env.FROM_EMAIL,      // VERIFIED SendGrid sender
+      replyTo: customer.email || process.env.FROM_EMAIL,
       subject: "🪵 New WoodCraft Door Order",
       text: message,
     });
