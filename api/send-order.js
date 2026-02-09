@@ -38,9 +38,9 @@ Total: GHS ${total}
       text: message,
     });
 
-    res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false });
+    console.error("SendGrid error:", error);
+    return res.status(500).json({ success: false });
   }
 }
