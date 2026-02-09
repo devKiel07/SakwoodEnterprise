@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/devKiel07/SakwoodEnterprise#readme",
   "dependencies": {
-    "@sendgrid/mail": "^8.1.6"
+
+    "nodemailer": "^8.0.1"
   }
 }
