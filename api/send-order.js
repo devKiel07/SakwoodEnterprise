@@ -27,7 +27,9 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Sakwood Enterprise <no-reply@sakwoodenterprise.com>',
+        from: 'sakwoodenterprise@gmail.com',
+from: 'sakwoodenterprise@gmail.com',
+
         to: 'ezekieltagoe20@gmail.com',
         subject: `🛒 New Order #${Date.now()} from ${customer.name}`,
         html: `
