@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Checkout | WoodCraft Doors</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
@@ -93,18 +92,15 @@ footer a:hover {
 </head>
 
 <body>
-
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg fixed-top">
 <div class="container-fluid">
   <a class="navbar-brand" href="index.html">
     <img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px;">
   </a>
-
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
     <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto align-items-lg-center">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -131,23 +127,23 @@ footer a:hover {
       <form id="checkoutForm">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label>Full Name</label>
-            <input type="text" class="form-control" required>
+            <label>Full Name *</label>
+            <input type="text" class="form-control" name="name" required>
           </div>
           <div class="col-md-6 mb-3">
-            <label>Phone Number</label>
-            <input type="tel" class="form-control" required>
+            <label>Phone Number *</label>
+            <input type="tel" class="form-control" name="phone" required>
           </div>
         </div>
 
         <div class="mb-3">
           <label>Email (optional)</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" name="email">
         </div>
 
         <div class="mb-3">
-          <label>Delivery Address</label>
-          <textarea class="form-control" rows="3" required></textarea>
+          <label>Delivery Address *</label>
+          <textarea class="form-control" rows="3" name="address" required></textarea>
         </div>
 
         <hr class="text-light">
@@ -157,7 +153,7 @@ footer a:hover {
 
         <h6 class="mb-4">Payment Method: <strong>Payment on Delivery</strong></h6>
 
-        <button type="submit" class="btn btn-warning w-100 btn-lg">
+        <button type="submit" class="btn btn-warning w-100 btn-lg" id="placeOrderBtn">
           Place Order
         </button>
       </form>
@@ -183,33 +179,41 @@ footer a:hover {
         <h5>Quick Links</h5>
         <p><a href="index.html">Home</a></p>
         <p><a href="products.html">Products</a></p>
-         <p><a href="about.html">About</a></p>
+        <p><a href="about.html">About</a></p>
         <p><a href="contact.html">Contact</a></p>
         <p><a href="faq.html">FAQ</a></p>
       </div>
     </div>
   </div>
-
   <div class="footer-bottom">
     © 2026 WoodCraft Doors. All Rights Reserved.
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-// GLOBAL CART COUNT (USED ON ALL PAGES)
-// ================= SYNC CART ACROSS PAGES =================
-// ======= CART FUNCTIONS =======
+// ===== YOUR EMAILJS CREDENTIALS (REPLACE THESE 3 VALUES) =====
+// 1. Sign up: https://www.emailjs.com
+// 2. Email Services → Add Gmail (sakwoodenterprise@gmail.com)
+// 3. Email Templates → Create template (copy IDs below)
+// 4. Account → Public Key (copy below)
+const EMAILJS_PUBLIC_KEY = "tdG6auzNc-iNhPhRI";      // ← REPLACE
+const EMAILJS_SERVICE_ID = "service_0d34gyf";     // ← REPLACE  
+const EMAILJS_TEMPLATE_ID = "template_rijwftw";   // ← REPLACE
 
-// Get cart from localStorage
+// Initialize EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// ===== CART FUNCTIONS (UNCHANGED) =====
 function getCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   return cart.map(item => ({ ...item, qty: item.qty && item.qty > 0 ? Number(item.qty) : 0 }));
 }
 
-// Update cart badge
 function updateCartBadge() {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -218,13 +222,11 @@ function updateCartBadge() {
   togglePlaceOrderButton(count);
 }
 
-// Enable/disable "Place Order" button
 function togglePlaceOrderButton(count) {
   const btn = document.querySelector("#checkoutForm button[type=submit]");
   if(btn) btn.disabled = count === 0;
 }
 
-// Display order summary
 function displayOrderSummary() {
   const cart = getCart();
   const summaryDiv = document.getElementById("order-summary");
@@ -233,22 +235,31 @@ function displayOrderSummary() {
   const hasItems = cart.some(i => i.qty > 0);
 
   if (!hasItems) {
-    summaryDiv.innerHTML = "<p>Your cart is empty.</p>";
+    summaryDiv.innerHTML = "<p class='text-muted'>Your cart is empty.</p>";
     return;
   }
 
+  let total = 0;
   cart.forEach(item => {
     if(item.qty > 0){
       const div = document.createElement("div");
       div.className = "item";
-      div.innerHTML = `<span>${item.name} x ${item.qty}</span> <strong>₵${item.price * item.qty}</strong>`;
+      const itemTotal = item.price * item.qty;
+      div.innerHTML = `<span>${item.name} x ${item.qty}</span> <strong>₵${itemTotal}</strong>`;
       summaryDiv.appendChild(div);
+      total += itemTotal;
     }
   });
+
+  // Add total row
+  const totalDiv = document.createElement("div");
+  totalDiv.className = "item fw-bold mt-3 pt-2 border-top border-warning border-2";
+  totalDiv.innerHTML = `<span>TOTAL</span> <strong>₵${total.toLocaleString()}</strong>`;
+  summaryDiv.appendChild(totalDiv);
 }
 
-// Handle checkout and send to SendGrid API
-document.getElementById("checkoutForm").addEventListener("submit", async function(e){
+// ===== EMAILJS CHECKOUT (NEW) =====
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const cart = getCart().filter(i => i.qty > 0);
@@ -257,36 +268,48 @@ document.getElementById("checkoutForm").addEventListener("submit", async functio
     return;
   }
 
+  // Get form data
+  const formData = new FormData(this);
   const customer = {
-    name: this.querySelector("input[type=text]").value,
-    phone: this.querySelector("input[type=tel]").value,
-    email: this.querySelector("input[type=email]").value,
-    address: this.querySelector("textarea").value
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email') || 'Not provided',
+    address: formData.get('address')
   };
 
   const total = cart.reduce((sum,i) => sum + (i.price * i.qty), 0);
+  const cart_items = cart.map(item => `${item.name} x ${item.qty} (₵${item.price * item.qty})`).join('\n');
 
-  try {
-    const res = await fetch("/api/send-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ customer, cart, total })
-    });
+  // Show loading
+  const btn = document.getElementById('placeOrderBtn');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Sending...';
+  btn.disabled = true;
 
-    const data = await res.json();
-    if(data.success){
-      alert("Order placed successfully!");
-      localStorage.removeItem("cart");
-      updateCartBadge();
-      displayOrderSummary();
-      setTimeout(() => window.location.href = "index.html", 1000);
-    } else {
-      alert("Failed to send order. Please try again.");
-    }
-  } catch(err){
-    console.error(err);
-    alert("Error submitting order. Please try again.");
-  }
+  // Send via EmailJS
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    name: customer.name,
+    phone: customer.phone,
+    email: customer.email,
+    address: customer.address,
+    cart_items: cart_items,
+    total: `₵${total.toLocaleString()}`
+  }).then((result) => {
+    console.log('✅ EmailJS success:', result);
+    alert("🎉 Order placed successfully! We'll contact you within 24 hours.");
+    
+    // Clear cart & redirect
+    localStorage.removeItem("cart");
+    updateCartBadge();
+    displayOrderSummary();
+    setTimeout(() => window.location.href = "index.html", 1500);
+  }, (error) => {
+    console.error('❌ EmailJS error:', error);
+    alert("❌ Failed to send order. Please try again or call: 0243860943");
+  }).finally(() => {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  });
 });
 
 // Initialize page
