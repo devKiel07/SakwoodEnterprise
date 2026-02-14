@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WoodCraft Doors</title>
+<title>SakwoodEnterprise | Premium Wooden Doors</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,36 +21,64 @@ body {
 
 /* ================= NAVBAR ================= */
 .navbar {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(15px);
   border-radius: 40px;
   margin: 10px 20px;
-  padding: 6px 18px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  padding: 8px 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  transition: 0.3s ease;
 }
 
-.navbar-toggler { border:none; }
-.navbar-toggler:focus { box-shadow:none; }
+.brand-logo {
+  height: 55px;
+}
 
-/* White hamburger for mobile */
+.brand-text {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  letter-spacing: 1px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* White Hamburger */
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar .nav-link {
   color: #fff !important;
   font-weight: 600;
+  transition: 0.3s;
 }
+
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: #ffc107 !important;
+  transform: translateY(-2px);
 }
 
-.navbar-brand span {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.25rem;
-  margin-left: 8px;
+/* CART BADGE */
+.nav-link.position-relative {
+  position: relative;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: .7rem;
+  padding: 3px 6px;
+  border-radius: 50%;
 }
 
 /* ================= HERO ================= */
@@ -72,6 +100,11 @@ body {
   font-size: 1.4rem;
   margin-top: 10px;
   opacity: 0.9;
+}
+
+.hero .btn {
+  border-radius: 30px;
+  padding: 10px 30px;
 }
 
 /* ================= MODERN FOOTER ================= */
@@ -138,11 +171,10 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ================= MEDIA ================= */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  .hero h1 { font-size: 2.1rem; }
+  .hero h1 { font-size: 2.2rem; }
   .hero p { font-size: 1.1rem; }
-  .navbar-brand img { height: 55px; }
   footer { text-align: center; }
 }
 
@@ -151,44 +183,50 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg fixed-top">
-<div class="container-fluid">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
 
-  <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px;">
-    <span>SakwoodEnterprise</span>
-  </a>
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="sakwoodLOGO.png" alt="Logo" class="brand-logo">
+      <span class="brand-text">SakwoodEnterprise</span>
+    </a>
 
-  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- Hamburger -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ms-auto align-items-lg-center text-center">
-      <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-      <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-        <a class="nav-link position-relative" href="cart.html">
-          🛒 <span id="cart-count" class="badge bg-danger">0</span>
-        </a>
-      </li>
-    </ul>
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center text-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <a class="nav-link position-relative" href="cart.html">
+            🛒 <span id="cart-count" class="badge bg-danger">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
   </div>
-</div>
 </nav>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <div class="hero">
   <h1>Premium Wooden Doors</h1>
   <p>Strong • Elegant • Durable</p>
   <a href="products.html" class="btn btn-warning btn-lg mt-3">Shop Now</a>
 </div>
 
-<!-- MODERN FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer>
   <div class="container">
     <div class="row">
