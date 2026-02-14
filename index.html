@@ -9,7 +9,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-
 /* ================= BODY ================= */
 body {
   margin: 0;
@@ -35,7 +34,7 @@ body {
 }
 
 .brand-text {
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 700;
   font-size: 1.3rem;
   margin-left: 10px;
@@ -67,10 +66,18 @@ body {
   transform: translateY(-2px);
 }
 
-/* CART BADGE */
-.nav-link.position-relative {
-  position: relative;
+/* ================= CART ICON - WHITE & VISIBLE ================= */
+.cart-link {
+  position: relative !important;
   color: #ffffff !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+
+.cart-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-2px);
 }
 
 #cart-count {
@@ -78,8 +85,17 @@ body {
   top: -8px;
   right: -8px;
   font-size: .7rem;
-  padding: 3px 6px;
+  padding: 2px 6px;
   border-radius: 50%;
+  background: #dc3545 !important;
+  color: white !important;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 /* ================= HERO ================= */
@@ -172,20 +188,35 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE RESPONSIVE ================= */
 @media(max-width:768px){
+  .hero h1 { 
+    font-size: 2.2rem; 
+  }
+  
+  .hero p { 
+    font-size: 1.1rem; 
+  }
+  
+  footer { 
+    text-align: center; 
+  }
 
-  .hero h1 { font-size: 2.2rem; }
-  .hero p { font-size: 1.1rem; }
-  footer { text-align: center; }
-
-  /* Force cart icon white in mobile */
-  .nav-link.position-relative {
+  /* Force cart icon white and visible on mobile */
+  .cart-link {
     color: #ffffff !important;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    text-shadow: 0 0 8px rgba(255,255,255,0.9);
+  }
+  
+  #cart-count {
+    top: -10px;
+    right: -10px;
+    font-size: 0.8rem;
+    min-width: 20px;
+    height: 20px;
   }
 }
-
 </style>
 </head>
 
@@ -208,14 +239,25 @@ footer {
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center text-center">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
         <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-          <a class="nav-link position-relative" href="cart.html">
-            🛒 <span id="cart-count" class="badge bg-danger">0</span>
+          <a class="nav-link cart-link" href="cart.html" title="Shopping Cart">
+            🛒 
+            <span id="cart-count" class="badge bg-danger">0</span>
           </a>
         </li>
       </ul>
@@ -231,9 +273,52 @@ footer {
   <a href="products.html" class="btn btn-warning btn-lg mt-3">Shop Now</a>
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= MODERN FOOTER ================= -->
 <footer>
   <div class="container">
+    <div class="row">
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">SakwoodEnterprise</h5>
+        <p class="footer-text">
+          Premium wooden doors crafted for durability, security and beauty.
+        </p>
+        <div class="social-icons mt-3">
+          <a href="https://www.instagram.com/sakwoodenterprise/" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@sakwood.enterpris" target="_blank" rel="noopener">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Quick Links</h5>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Contact</h5>
+        <p class="footer-text">📍 Sasabi Junction, Dodowa Road</p>
+        <p class="footer-text">📞 0243860943 / 0552186664</p>
+        <p class="footer-text">📧 sakwoodenterprise@gmail.com</p>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Business Hours</h5>
+        <p class="footer-text">Mon - Fri: 8AM - 6PM</p>
+        <p class="footer-text">Saturday: 9AM - 4PM</p>
+        <p class="footer-text">Sunday: Closed</p>
+      </div>
+
+    </div>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
       © 2026 SakwoodEnterprise. All Rights Reserved.
@@ -258,10 +343,21 @@ function updateCartBadge() {
   const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
   const badge = document.getElementById("cart-count");
-  if (badge) badge.textContent = count;
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'flex';
+  }
 }
 
+// Update cart badge on page load
 document.addEventListener("DOMContentLoaded", updateCartBadge);
+
+// Listen for cart changes from other tabs
+window.addEventListener('storage', (e) => {
+  if (e.key === 'cart') {
+    updateCartBadge();
+  }
+});
 </script>
 
 </body>

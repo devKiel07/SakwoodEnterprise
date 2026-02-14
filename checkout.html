@@ -9,7 +9,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-
 /* ================= BODY ================= */
 body {
   margin: 0;
@@ -21,57 +20,82 @@ body {
 
 /* ================= NAVBAR ================= */
 .navbar {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(15px);
   border-radius: 40px;
   margin: 10px 20px;
-  padding: 6px 18px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  padding: 8px 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  transition: 0.3s ease;
 }
 
-.navbar-brand span{
-  color:#fff;
-  font-weight:700;
-  font-size:1.2rem;
+.brand-logo {
+  height: 55px;
+}
+
+.brand-text {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  letter-spacing: 1px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* White Hamburger */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar .nav-link {
   color: #fff !important;
   font-weight: 600;
+  transition: 0.3s;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: #ffc107 !important;
+  transform: translateY(-2px);
 }
 
-/* White hamburger icon */
-.navbar-toggler {
-  border: none;
-}
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Cart Icon */
-.navbar .fa-shopping-cart {
-  font-size: 1.2rem;
+/* ================= CART ICON - WHITE & VISIBLE ================= */
+.cart-link {
+  position: relative !important;
   color: #ffffff !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 
-.nav-link.position-relative{
-  position:relative;
+.cart-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-2px);
 }
 
-#cart-count{
-  position:absolute;
-  top:-10px;
-  right:-5px;
-  font-size:0.7rem;
-  padding:2px 6px;
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: .7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  background: #dc3545 !important;
+  color: white !important;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 /* ================= CHECKOUT CARD ================= */
@@ -90,7 +114,9 @@ body {
   padding: 6px 0;
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-#order-summary .item:last-child { border-bottom: none; }
+#order-summary .item:last-child { 
+  border-bottom: none; 
+}
 
 /* ================= MODERN FOOTER ================= */
 footer {
@@ -98,15 +124,18 @@ footer {
   backdrop-filter: blur(10px);
   padding-top: 60px;
 }
+
 .footer-title {
   color: #fff;
   font-weight: 700;
   margin-bottom: 20px;
 }
+
 .footer-text {
   color: #aaa;
   font-size: 0.95rem;
 }
+
 .footer-links a {
   display: block;
   color: #aaa;
@@ -114,10 +143,12 @@ footer {
   text-decoration: none;
   transition: 0.3s;
 }
+
 .footer-links a:hover {
   color: #ffc107;
   transform: translateX(5px);
 }
+
 .social-icons a {
   display: inline-flex;
   justify-content: center;
@@ -131,16 +162,19 @@ footer {
   transition: 0.3s ease;
   font-size: 1.2rem;
 }
+
 .social-icons a:hover {
   background: #ffc107;
   color: #000;
   transform: translateY(-5px);
 }
+
 .footer-divider {
   height: 1px;
   background: #222;
   margin: 40px 0 20px;
 }
+
 .footer-bottom {
   text-align: center;
   color: #777;
@@ -148,12 +182,30 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-  .checkout-box { padding: 20px; }
-  footer{text-align:center;}
-}
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:768px) {
+  .checkout-box { 
+    padding: 20px; 
+  }
+  footer { 
+    text-align: center; 
+  }
 
+  /* Force cart icon white and visible on mobile */
+  .cart-link {
+    color: #ffffff !important;
+    font-size: 1.6rem;
+    text-shadow: 0 0 8px rgba(255,255,255,0.9);
+  }
+  
+  #cart-count {
+    top: -10px;
+    right: -10px;
+    font-size: 0.8rem;
+    min-width: 20px;
+    height: 20px;
+  }
+}
 </style>
 </head>
 
@@ -161,32 +213,34 @@ footer {
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg fixed-top">
-<div class="container-fluid">
-  <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="sakwoodLOGO.png" style="height:60px;">
-    <span class="ms-2">SakwoodEnt</span>
-  </a>
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="sakwoodLOGO.png" alt="Logo" class="brand-logo">
+      <span class="brand-text">SakwoodEnt</span>
+    </a>
 
-  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ms-auto align-items-lg-center text-center">
-      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-      <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-        <a class="nav-link position-relative" href="cart.html">
-          <i class="fas fa-shopping-cart"></i>
-          <span id="cart-count" class="badge bg-danger">0</span>
-        </a>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center text-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <a class="nav-link cart-link" href="cart.html" title="Shopping Cart">
+            🛒 
+            <span id="cart-count" class="badge bg-danger">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </nav>
 
 <!-- ================= CHECKOUT ================= -->
@@ -232,64 +286,152 @@ footer {
   </div>
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= MODERN FOOTER ================= -->
 <footer>
-<div class="container">
-<div class="row">
+  <div class="container">
+    <div class="row">
 
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">SakwoodEnterprise</h5>
-<p class="footer-text">Premium wooden doors crafted for durability, security and beauty.</p>
-</div>
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">SakwoodEnterprise</h5>
+        <p class="footer-text">
+          Premium wooden doors crafted for durability, security and beauty.
+        </p>
+        <div class="social-icons mt-3">
+          <a href="https://www.instagram.com/sakwoodenterprise/" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@sakwood.enterpris" target="_blank" rel="noopener">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
 
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Quick Links</h5>
-<div class="footer-links">
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="faq.html">FAQ</a>
-</div>
-</div>
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Quick Links</h5>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+      </div>
 
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Contact</h5>
-<p class="footer-text">📍 Sasabi Junction, Dodowa Road</p>
-<p class="footer-text">📞 0243860943 / 0552186664</p>
-<p class="footer-text">📧 sakwoodenterprise@gmail.com</p>
-</div>
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Contact</h5>
+        <p class="footer-text">📍 Sasabi Junction, Dodowa Road</p>
+        <p class="footer-text">📞 0243860943 / 0552186664</p>
+        <p class="footer-text">📧 sakwoodenterprise@gmail.com</p>
+      </div>
 
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Business Hours</h5>
-<p class="footer-text">Mon - Fri: 8AM - 6PM</p>
-<p class="footer-text">Saturday: 9AM - 4PM</p>
-<p class="footer-text">Sunday: Closed</p>
-</div>
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Business Hours</h5>
+        <p class="footer-text">Mon - Fri: 8AM - 6PM</p>
+        <p class="footer-text">Saturday: 9AM - 4PM</p>
+        <p class="footer-text">Sunday: Closed</p>
+      </div>
 
-</div>
-
-<div class="footer-divider"></div>
-
-<div class="footer-bottom">
-© 2026 SakwoodEnterprise. All Rights Reserved.
-</div>
-</div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      © 2026 SakwoodEnterprise. All Rights Reserved.
+    </div>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-// CART FUNCTIONS
-function getCart(){
-  return JSON.parse(localStorage.getItem("cart"))||[];
+// ================= CART FUNCTIONS =================
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
-function updateCartBadge(){
-  const cart=getCart();
-  const count=cart.reduce((sum,i)=>sum+(i.qty||0),0);
-  document.getElementById("cart-count").textContent=count;
+
+function updateCartBadge() {
+  const cart = getCart();
+  const count = cart.reduce((sum, i) => sum + (i.qty || 0), 0);
+  const badge = document.getElementById("cart-count");
+  if (badge) {
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'flex';
+  }
 }
-document.addEventListener("DOMContentLoaded",updateCartBadge);
+
+// ================= CHECKOUT FUNCTIONS =================
+function renderOrderSummary() {
+  const cart = getCart();
+  const summaryDiv = document.getElementById('order-summary');
+  let html = '';
+  let total = 0;
+
+  if (cart.length === 0) {
+    html = '<p class="text-light">Your cart is empty</p>';
+  } else {
+    cart.forEach(item => {
+      if (item.qty > 0) {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        html += `
+          <div class="item">
+            <span>${item.name} (x${item.qty})</span>
+            <span>GHS ${itemTotal}</span>
+          </div>
+        `;
+      }
+    });
+    html += `
+      <div class="item">
+        <strong>Total</strong>
+        <strong>GHS ${total}</strong>
+      </div>
+    `;
+  }
+  
+  summaryDiv.innerHTML = html;
+}
+
+// ================= PLACE ORDER =================
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const orderData = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email') || 'Not provided',
+    address: formData.get('address'),
+    cart: getCart(),
+    timestamp: new Date().toLocaleString('en-GH')
+  };
+
+  // Store order
+  const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+  orders.push(orderData);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  // Clear cart
+  localStorage.setItem('cart', '[]');
+
+  // Success message
+  alert(`Thank you ${orderData.name}! Your order has been placed successfully. We'll contact you at ${orderData.phone} to confirm delivery.`);
+  
+  // Redirect to success page or home
+  window.location.href = 'index.html';
+});
+
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", function() {
+  updateCartBadge();
+  renderOrderSummary();
+  
+  // Listen for cart changes from other tabs
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'cart') {
+      updateCartBadge();
+      renderOrderSummary();
+    }
+  });
+});
 </script>
 
 </body>
