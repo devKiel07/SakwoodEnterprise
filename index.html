@@ -70,6 +70,7 @@ body {
 /* CART BADGE */
 .nav-link.position-relative {
   position: relative;
+  color: #ffffff !important;
 }
 
 #cart-count {
@@ -173,9 +174,16 @@ footer {
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
+
   .hero h1 { font-size: 2.2rem; }
   .hero p { font-size: 1.1rem; }
   footer { text-align: center; }
+
+  /* Force cart icon white in mobile */
+  .nav-link.position-relative {
+    color: #ffffff !important;
+    font-size: 1.4rem;
+  }
 }
 
 </style>
@@ -187,20 +195,17 @@ footer {
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container-fluid d-flex align-items-center justify-content-between">
 
-    <!-- Brand -->
     <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="sakwoodLOGO.png" alt="Logo" class="brand-logo">
       <span class="brand-text">SakwoodEnt</span>
     </a>
 
-    <!-- Hamburger -->
     <button class="navbar-toggler" type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center text-center">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
@@ -229,52 +234,7 @@ footer {
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="container">
-    <div class="row">
-
-      <div class="col-md-3 mb-4">
-        <h5 class="footer-title">SakwoodEnterprise</h5>
-        <p class="footer-text">
-          Premium wooden doors crafted for durability, security and beauty.
-        </p>
-        <div class="social-icons mt-3">
-          <a href="https://www.instagram.com/sakwoodenterprise/" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.tiktok.com/@sakwood.enterpris" target="_blank">
-            <i class="fab fa-tiktok"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-3 mb-4">
-        <h5 class="footer-title">Quick Links</h5>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="faq.html">FAQ</a>
-        </div>
-      </div>
-
-      <div class="col-md-3 mb-4">
-        <h5 class="footer-title">Contact</h5>
-        <p class="footer-text">📍 Sasabi Junction, Dodowa Road</p>
-        <p class="footer-text">📞 0243860943 / 0552186664</p>
-        <p class="footer-text">📧 sakwoodenterprise@gmail.com</p>
-      </div>
-
-      <div class="col-md-3 mb-4">
-        <h5 class="footer-title">Business Hours</h5>
-        <p class="footer-text">Mon - Fri: 8AM - 6PM</p>
-        <p class="footer-text">Saturday: 9AM - 4PM</p>
-        <p class="footer-text">Sunday: Closed</p>
-      </div>
-
-    </div>
-
     <div class="footer-divider"></div>
-
     <div class="footer-bottom">
       © 2026 SakwoodEnterprise. All Rights Reserved.
     </div>

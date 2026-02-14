@@ -30,11 +30,10 @@ body{
 }
 .navbar-toggler{border:none;}
 .navbar-toggler:focus{box-shadow:none;}
-/* White hamburger icon */
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
-
 
 .navbar-brand span{
   color:#fff;
@@ -53,7 +52,10 @@ body{
 }
 
 /* CART BADGE */
-.nav-link.position-relative{position:relative;}
+.nav-link.position-relative{
+  position:relative;
+  color:#ffffff !important;
+}
 #cart-count{
   position:absolute;
   top:-8px;
@@ -155,6 +157,12 @@ footer{
   .navbar{margin:10px;border-radius:20px;}
   .faq-box{padding:20px;margin-top:110px;}
   footer{text-align:center;}
+
+  /* Force cart icon white in mobile */
+  .nav-link.position-relative{
+    color:#ffffff !important;
+    font-size:1.4rem;
+  }
 }
 
 </style>
@@ -162,13 +170,13 @@ footer{
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg fixed-top">
 <div class="container-fluid">
 
 <a class="navbar-brand d-flex align-items-center" href="index.html">
 <img src="sakwoodLOGO.png" alt="Logo" style="height:60px;">
-<span>SakwoodEnterprise</span>
+<span>SakwoodEnt</span>
 </a>
 
 <button class="navbar-toggler" type="button"
@@ -198,7 +206,7 @@ data-bs-target="#mainNavbar">
 </div>
 </nav>
 
-<!-- ================= FAQ CONTENT ================= -->
+<!-- FAQ CONTENT -->
 <div class="container">
 <div class="faq-box">
 
@@ -249,57 +257,13 @@ We accept cash on delivery.
 </div>
 </div>
 
-<!-- ================= MODERN FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
 <div class="container">
-<div class="row">
-
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">SakwoodEnterprise</h5>
-<p class="footer-text">Premium wooden doors crafted for durability, security and beauty.</p>
-<div class="social-icons mt-3">
-<a href="https://www.instagram.com/sakwoodenterprise/" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-<a href="https://www.tiktok.com/@sakwood.enterpris" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
-</div>
-</div>
-
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Quick Links</h5>
-<div class="footer-links">
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="faq.html">FAQ</a>
-</div>
-</div>
-
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Contact</h5>
-<p class="footer-text">📍 Sasabi Junction, Dodowa Road</p>
-<p class="footer-text">📞 0243860943 / 0552186664</p>
-<p class="footer-text">📧 sakwoodenterprise@gmail.com</p>
-</div>
-
-<div class="col-md-3 mb-4">
-<h5 class="footer-title">Business Hours</h5>
-<p class="footer-text">Mon - Fri: 8AM - 6PM</p>
-<p class="footer-text">Saturday: 9AM - 4PM</p>
-<p class="footer-text">Sunday: Closed</p>
-</div>
-
-</div>
-
 <div class="footer-divider"></div>
-
 <div class="footer-bottom">
 © 2026 SakwoodEnterprise. All Rights Reserved.
 </div>
-
 </div>
 </footer>
 

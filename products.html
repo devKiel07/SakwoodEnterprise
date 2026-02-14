@@ -48,6 +48,7 @@ body{
   right:-5px;
   font-size:0.7rem;
   padding:2px 6px;
+  color:white;
 }
 
 /* White hamburger icon */
@@ -189,7 +190,7 @@ footer{
 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
 <li class="nav-item ms-lg-3">
-<a class="nav-link position-relative" href="cart.html">🛒
+<a class="nav-link position-relative" href="cart.html" style="color:white;">🛒
 <span id="cart-count" class="badge bg-danger">0</span>
 </a>
 </li>
@@ -201,117 +202,8 @@ footer{
 <!-- ================= PRODUCTS ================= -->
 <div class="container" style="margin-top:130px">
 <h2 class="text-center mb-4">Our Wooden Doors</h2>
-<div class="row g-4">
-
-<!-- Product cards -->
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="modern oark.png" alt="Modern Oak">
-<div class="card-body text-center">
-<h5>Modern Oak Interior Door</h5>
-<p>Elegant modern oak door perfect for interiors.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Modern Oak Interior Door',1200,'modern oark.png')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="classic carved wooden door.png" alt="Classic Carved">
-<div class="card-body text-center">
-<h5>Classic Carved Wooden Door</h5>
-<p>Traditional hand-carved hardwood door.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Classic Carved Wooden Door',1200,'classic carved wooden door.png')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="flush bedroom wooden doors.jpg" alt="Flush Bedroom">
-<div class="card-body text-center">
-<h5>Flush Bedroom Wooden Door</h5>
-<p>Smooth modern door ideal for bedrooms.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Flush Bedroom Wooden Door',1200,'flush bedroom wooden doors.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="sliding barn wooden door.jpg" alt="Sliding Barn">
-<div class="card-body text-center">
-<h5>Sliding Barn Wooden Door</h5>
-<p>Rustic sliding barn-style wooden door.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Sliding Barn Wooden Door',1200,'sliding barn wooden door.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="premium mahogany main door.jpg" alt="Premium Mahogany">
-<div class="card-body text-center">
-<h5>Premium Mahogany Main Door</h5>
-<p>Luxurious solid mahogany construction with premium finish.</p>
-<p class="fw-bold">GHS 3,500</p>
-<button class="btn btn-warning" onclick="addToCart('Premium Mahogany Main Door',3500,'premium mahogany main door.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="solid teak security doors.jpg" alt="Solid Teak Security">
-<div class="card-body text-center">
-<h5>Solid Teak Security Door</h5>
-<p>Durable solid teak construction for enhanced security.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Solid Teak Security Door',1200,'solid teak security doors.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="modern crest teak door.jpg" alt="Modern Crest Teak">
-<div class="card-body text-center">
-<h5>Modern Crest Teak Door</h5>
-<p>Stylish teak wood door with sleek paneling and geometric detailing.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Modern Crest Teak Door',1200,'modern crest teak door.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="imperial mahogany double door.jpg" alt="Imperial Mahogany Double">
-<div class="card-body text-center">
-<h5>Imperial Mahogany Double Door</h5>
-<p>Refined double-leaf mahogany door with classic panels.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Imperial Mahogany Double Door',1200,'imperial mahogany double door.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6">
-<div class="card bg-dark bg-opacity-75 text-white h-100">
-<img src="pine hollow doors.jpg" alt="Pine Hollow Core">
-<div class="card-body text-center">
-<h5>Pine Hollow Core Doors</h5>
-<p>Lightweight hollow core wooden door ideal for interiors.</p>
-<p class="fw-bold">GHS 1,200</p>
-<button class="btn btn-warning" onclick="addToCart('Pine Hollow Core Doors',1200,'pine hollow doors.jpg')">Add to Cart</button>
-</div>
-</div>
-</div>
-
+<div class="row g-4" id="products-row">
+<!-- Products will be dynamically generated here -->
 </div>
 </div>
 
@@ -319,9 +211,27 @@ footer{
 <div class="container mt-5">
 <h3 class="text-center mb-4">Customer Reviews</h3>
 <div class="row g-4">
-<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-img"><p>"Strong, elegant and perfectly finished doors."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – Ama K.</p></div></div>
-<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/men/75.jpg" class="review-img"><p>"Excellent service and fast delivery."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – Kwame T.</p></div></div>
-<div class="col-md-4"><div class="review-card text-center"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="review-img"><p>"Top quality craftsmanship."</p><p class="fw-bold">⭐⭐⭐⭐⭐ – James R.</p></div></div>
+<div class="col-md-4">
+<div class="review-card text-center">
+<img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-img">
+<p>"Strong, elegant and perfectly finished doors."</p>
+<p class="fw-bold">⭐⭐⭐⭐⭐ – Ama K.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="review-card text-center">
+<img src="https://randomuser.me/api/portraits/men/75.jpg" class="review-img">
+<p>"Excellent service and fast delivery."</p>
+<p class="fw-bold">⭐⭐⭐⭐⭐ – Kwame T.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="review-card text-center">
+<img src="https://randomuser.me/api/portraits/men/32.jpg" class="review-img">
+<p>"Top quality craftsmanship."</p>
+<p class="fw-bold">⭐⭐⭐⭐⭐ – James R.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -397,7 +307,39 @@ function addToCart(name, price, image){
   alert(name + " added to cart!");
 }
 
-document.addEventListener("DOMContentLoaded", updateCartCount);
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+
+  const products = [
+    {name:"Modern Oak Interior Door", price:1200, image:"modern oark.png", desc:"Elegant modern oak door perfect for interiors."},
+    {name:"Classic Carved Wooden Door", price:1200, image:"classic carved wooden door.png", desc:"Traditional hand-carved hardwood door."},
+    {name:"Flush Bedroom Wooden Door", price:1200, image:"flush bedroom wooden doors.jpg", desc:"Smooth modern door ideal for bedrooms."},
+    {name:"Sliding Barn Wooden Door", price:1200, image:"sliding barn wooden door.jpg", desc:"Rustic sliding barn-style wooden door."},
+    {name:"Premium Mahogany Main Door", price:3500, image:"premium mahogany main door.jpg", desc:"Luxurious solid mahogany construction with premium finish."},
+    {name:"Solid Teak Security Door", price:1200, image:"solid teak security doors.jpg", desc:"Durable solid teak construction for enhanced security."},
+    {name:"Modern Crest Teak Door", price:1200, image:"modern crest teak door.jpg", desc:"Stylish teak wood door with sleek paneling and geometric detailing."},
+    {name:"Imperial Mahogany Double Door", price:1200, image:"imperial mahogany double door.jpg", desc:"Refined double-leaf mahogany door with classic panels."},
+    {name:"Pine Hollow Core Doors", price:1200, image:"pine hollow doors.jpg", desc:"Lightweight hollow core wooden door ideal for interiors."}
+  ];
+
+  const container = document.getElementById("products-row");
+  products.forEach(p=>{
+    const col = document.createElement("div");
+    col.className="col-lg-4 col-md-6";
+    col.innerHTML = `
+      <div class="card bg-dark bg-opacity-75 text-white h-100">
+        <img src="${p.image}" alt="${p.name}">
+        <div class="card-body text-center">
+          <h5>${p.name}</h5>
+          <p>${p.desc}</p>
+          <p class="fw-bold">GHS ${p.price}</p>
+          <button class="btn btn-warning" onclick="addToCart('${p.name}',${p.price},'${p.image}')">Add to Cart</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(col);
+  });
+});
 </script>
 
 </body>

@@ -9,12 +9,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
+
 /* ================= BODY ================= */
 body {
   margin: 0;
   font-family: Segoe UI, sans-serif;
   background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat fixed;
-  background-size: cover;
   color: white;
   min-height: 100vh;
 }
@@ -28,22 +28,44 @@ body {
   padding: 6px 18px;
   box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
+
+.navbar-brand span{
+  color:#fff;
+  font-weight:700;
+  font-size:1.2rem;
+}
+
 .navbar .nav-link {
   color: #fff !important;
   font-weight: 600;
 }
+
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: #ffc107 !important;
 }
+
 /* White hamburger icon */
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Cart Icon */
+.navbar .fa-shopping-cart {
+  font-size: 1.2rem;
+  color: #ffffff !important;
 }
 
 .nav-link.position-relative{
   position:relative;
 }
+
 #cart-count{
   position:absolute;
   top:-10px;
@@ -126,26 +148,29 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ================= MEDIA ================= */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
   .checkout-box { padding: 20px; }
-  .navbar-brand img { height: 55px; }
   footer{text-align:center;}
 }
+
 </style>
 </head>
 
 <body>
+
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg fixed-top">
 <div class="container-fluid">
   <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="sakwoodLOGO.png" alt="WoodCraft Logo" style="height:65px;">
+    <img src="sakwoodLOGO.png" style="height:60px;">
     <span class="ms-2">SakwoodEnt</span>
   </a>
+
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    
+    <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto align-items-lg-center text-center">
       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -155,7 +180,8 @@ footer {
       <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
       <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
         <a class="nav-link position-relative" href="cart.html">
-          🛒 <span id="cart-count" class="badge bg-danger">0</span>
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="badge bg-danger">0</span>
         </a>
       </li>
     </ul>
@@ -206,20 +232,14 @@ footer {
   </div>
 </div>
 
-<!-- ================= MODERN FOOTER ================= -->
+<!-- ================= FOOTER ================= -->
 <footer>
 <div class="container">
 <div class="row">
 
 <div class="col-md-3 mb-4">
 <h5 class="footer-title">SakwoodEnterprise</h5>
-<p class="footer-text">
-Premium wooden doors crafted for durability, security and beauty.
-</p>
-<div class="social-icons mt-3">
-<a href="https://www.instagram.com/sakwoodenterprise/" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@sakwood.enterpris" target="_blank"><i class="fab fa-tiktok"></i></a>
-</div>
+<p class="footer-text">Premium wooden doors crafted for durability, security and beauty.</p>
 </div>
 
 <div class="col-md-3 mb-4">
@@ -248,7 +268,9 @@ Premium wooden doors crafted for durability, security and beauty.
 </div>
 
 </div>
+
 <div class="footer-divider"></div>
+
 <div class="footer-bottom">
 © 2026 SakwoodEnterprise. All Rights Reserved.
 </div>
@@ -256,104 +278,18 @@ Premium wooden doors crafted for durability, security and beauty.
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-// ================= CART FUNCTIONS =================
-const EMAILJS_PUBLIC_KEY = "tdG6auzNc-iNhPhRI";
-const EMAILJS_SERVICE_ID = "service_0d34gyf";
-const EMAILJS_TEMPLATE_ID = "template_rijwftw";
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
-function getCart() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  return cart.map(i => ({ ...i, qty: i.qty && i.qty > 0 ? Number(i.qty) : 0 }));
+// CART FUNCTIONS
+function getCart(){
+  return JSON.parse(localStorage.getItem("cart"))||[];
 }
-
-function updateCartBadge() {
-  const cart = getCart();
-  const count = cart.reduce((sum, i) => sum + i.qty, 0);
-  const badge = document.getElementById("cart-count");
-  if(badge) badge.textContent = count;
-  togglePlaceOrderButton(count);
+function updateCartBadge(){
+  const cart=getCart();
+  const count=cart.reduce((sum,i)=>sum+(i.qty||0),0);
+  document.getElementById("cart-count").textContent=count;
 }
-
-function togglePlaceOrderButton(count) {
-  const btn = document.querySelector("#checkoutForm button[type=submit]");
-  if(btn) btn.disabled = count === 0;
-}
-
-function displayOrderSummary() {
-  const cart = getCart();
-  const summaryDiv = document.getElementById("order-summary");
-  summaryDiv.innerHTML = "";
-  const hasItems = cart.some(i => i.qty > 0);
-  if(!hasItems) { summaryDiv.innerHTML = "<p class='text-muted'>Your cart is empty.</p>"; return; }
-
-  let total = 0;
-  cart.forEach(item => {
-    if(item.qty>0){
-      const div = document.createElement("div");
-      div.className = "item";
-      const itemTotal = item.price * item.qty;
-      div.innerHTML = `<span>${item.name} x ${item.qty}</span> <strong>₵${itemTotal}</strong>`;
-      summaryDiv.appendChild(div);
-      total += itemTotal;
-    }
-  });
-  const totalDiv = document.createElement("div");
-  totalDiv.className = "item fw-bold mt-3 pt-2 border-top border-warning border-2";
-  totalDiv.innerHTML = `<span>TOTAL</span> <strong>₵${total.toLocaleString()}</strong>`;
-  summaryDiv.appendChild(totalDiv);
-}
-
-// ================= EMAILJS CHECKOUT =================
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const cart = getCart().filter(i=>i.qty>0);
-  if(cart.length===0){ alert("Your cart is empty!"); return; }
-
-  const formData = new FormData(this);
-  const customer = {
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    email: formData.get('email') || 'Not provided',
-    address: formData.get('address')
-  };
-
-  const total = cart.reduce((sum,i)=>sum+(i.price*i.qty),0);
-  const cart_items = cart.map(i=>`${i.name} x ${i.qty} (₵${i.price*i.qty})`).join('\n');
-
-  const btn = document.getElementById('placeOrderBtn');
-  const originalText = btn.innerHTML;
-  btn.innerHTML = '⏳ Sending...';
-  btn.disabled = true;
-
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    name: customer.name,
-    phone: customer.phone,
-    email: customer.email,
-    address: customer.address,
-    cart_items: cart_items,
-    total: `₵${total.toLocaleString()}`
-  }).then(result => {
-    alert("🎉 Order placed successfully! We'll contact you within 24 hours.");
-    localStorage.removeItem("cart");
-    updateCartBadge();
-    displayOrderSummary();
-    setTimeout(()=>window.location.href="index.html",1500);
-  }).catch(err => {
-    alert("❌ Failed to send order. Please try again or call: 0243860943");
-    console.error(err);
-  }).finally(()=>{ btn.innerHTML = originalText; btn.disabled=false; });
-
-});
-
-// ================= INITIALIZE =================
-document.addEventListener("DOMContentLoaded", function(){
-  updateCartBadge();
-  displayOrderSummary();
-});
+document.addEventListener("DOMContentLoaded",updateCartBadge);
 </script>
 
 </body>
